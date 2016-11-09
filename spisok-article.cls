@@ -13,6 +13,11 @@
 
 \LoadClass[10pt,a5paper]{article}
 
+% AMS packages want to be first...
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\RequirePackage{amscd}
+
 \RequirePackage{ifxetex}
 
 \ifxetex
