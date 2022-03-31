@@ -107,11 +107,11 @@
 
 \begin{enumerate}
 \item
-  шрифт Times New Roman\footnote{Для Xe\LaTeX ~действительно
+  шрифт Times New Roman\footnote{Для \ifxetex \XeLaTeX \else Xe\LaTeX \fi действительно
   джентльменский набор из Times, \textsf{Arial} и \texttt{Courier},
   а у PDF\LaTeX ~с кириллицей в Times объективные трудности, поэтому
   PDF\LaTeX ~использует шрифты CM.  В итоге, чистовая вёрстка
-  выполняется при помощи Xe\LaTeX, будьте к этому готовы!}, кегль 10
+  выполняется при помощи \ifxetex \XeLaTeX \else Xe\LaTeX \fi, будьте к этому готовы!}, кегль 10
 \item
   первая страница: Все поля по 17 мм
 \item
@@ -162,8 +162,8 @@
 При наборе формул просьба по возможности использовать встроенные
 средства офисного пакета.
 
-Фрагменты текстов программ следует вставлять при помощи пакета
-\texttt{listing}:
+Фрагменты текстов программ следует вставлять при помощи окружения
+\texttt{lstlisting}:
 
 \begin{lstlisting}[language=C]
 int main()
@@ -187,7 +187,6 @@ int main()
 Собственные тезисы рекомендуется набирать в этом документе, заменяя
 текст и заголовки на свои.
 
-\makeatletter\renewcommand{\refname}{\intl@references}\makeatother
 \begin{thebibliography}{8}
 
 \bibitem{medvedev2011} Медведев О. Use case: отладка реализации RISC

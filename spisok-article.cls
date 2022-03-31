@@ -13,16 +13,16 @@
 
 \LoadClass[10pt,a5paper]{article}
 
-% AMS packages want to be first...
-\RequirePackage{amssymb}
-\RequirePackage{amsmath}
-\RequirePackage{amscd}
 
 \RequirePackage{ifxetex}
+
+% AMS packages want to be first...
+\RequirePackage{amsmath}
 
 \ifxetex
   \RequirePackage{mathspec}
   \RequirePackage{fontspec}
+  \RequirePackage{xltxtra}
   \defaultfontfeatures{Mapping=tex-text,Ligatures={TeX},Kerning=On}
 
   % Those buggy fonts...
@@ -77,6 +77,10 @@
 \RequirePackage[table,xcdraw]{xcolor}
 \RequirePackage{listings}
 \RequirePackage{makecell}
+\RequirePackage{longtable}
+\RequirePackage{amscd}
+\RequirePackage{amssymb}
+\RequirePackage{accents}
 
 \RequirePackage[top=23mm,left=17mm,right=17mm,bottom=17mm]{geometry}
 
