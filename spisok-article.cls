@@ -1,18 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{spisok-article}[2016/03/16 v0.0.1 Dmitry Luciv]
 
-\RequirePackage{kvoptions}
-\SetupKeyvalOptions{family=Spisok, prefix=Spisok@}
-\DeclareBoolOption{times}
-\DeclareStringOption[russian]{language}[russian]
-\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{article}}
-\ProcessKeyvalOptions*
-
-\input{i18n/_keys}
-\input{i18n/\Spisok@language}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions
 
 \LoadClass[10pt,a5paper]{article}
-
 
 \RequirePackage{ifxetex}
 
@@ -25,40 +17,18 @@
   \RequirePackage{xltxtra}
   \defaultfontfeatures{Mapping=tex-text,Ligatures={TeX},Kerning=On}
 
+  \setmainfont[]{Times New Roman}
+  \setromanfont[]{Times New Roman}
+  \setsansfont[]{Arial}
+  \setmonofont[]{Courier New}
+
   % Those buggy fonts...
-  \ifSpisok@times
-      \def\MyTimesFont#1{\expandafter#1[]{Times New Roman}}
-      \def\MyCourierFont#1{\expandafter#1[]{Courier New}}
-      \def\MyArialFont#1{\expandafter#1{Arial}}
-  \else
-      \def\MyTimesFont#1{\expandafter#1
-          [
-            Path=fonts/,
-            BoldFont=texgyretermes-bold,
-            ItalicFont=texgyretermes-italic,
-            BoldItalicFont=texgyretermes-bolditalic
-          ]{texgyretermes}
-      }
-      \def\MyCourierFont#1{\expandafter#1
-          [
-            Path=fonts/,
-            BoldFont=texgyrecursor-bold,
-            ItalicFont=texgyrecursor-italic,
-            BoldItalicFont=texgyrecursor-bolditalic
-          ]{texgyrecursor-regular}
-      }
-      \def\MyArialFont#1{\expandafter#1{Liberation Sans}}
-  \fi
-  \MyTimesFont{\setmainfont}
-  \MyTimesFont{\setromanfont}
-  \MyTimesFont{\newfontfamily{\cyrillicfont}}
-  \MyCourierFont{\setmonofont}
-  \MyCourierFont{\newfontfamily{\cyrillicfonttt}}
-  \MyArialFont{\setsansfont}
-  \MyArialFont{\newfontfamily{\cyrillicfontsf}}
-  
+  \newfontfamily{\cyrillicfont}{Times New Roman}
+  \newfontfamily{\cyrillicfonttt}{Courier New}
+  \newfontfamily{\cyrillicfontsf}{Arial}
+
   \RequirePackage{polyglossia}
-  \setdefaultlanguage{\Spisok@language}
+  \setdefaultlanguage{russian}
   \setotherlanguages{english}
 \else
   \RequirePackage{mmap}
